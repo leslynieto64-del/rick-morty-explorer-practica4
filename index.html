@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Miniaplicación web para consultar y filtrar personajes de Rick y Morty mediante una API REST.">
+  <title>Rick &amp; Morty Explorer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div>
+        <h1>Rick &amp; Morty Explorer</h1>
+        <p>Consulta y filtra personajes de la serie.</p>
+      </div>
+      <a class="api-link" href="https://rickandmortyapi.com/documentation" target="_blank" rel="noopener noreferrer">Documentación de la API</a>
+    </div>
+  </header>
+
+  <main class="container main-content">
+    <section class="filters-panel" aria-labelledby="filters-heading">
+      <h2 id="filters-heading">Buscar personajes</h2>
+      <form id="filters-form">
+        <div class="filter-field search-field">
+          <label for="name-filter">Nombre</label>
+          <input id="name-filter" name="name" type="search" placeholder="Ej. Rick Sanchez" autocomplete="off">
+        </div>
+
+        <div class="filter-field">
+          <label for="status-filter">Estado</label>
+          <select id="status-filter" name="status">
+            <option value="">Todos</option>
+            <option value="alive">Vivo</option>
+            <option value="dead">Muerto</option>
+            <option value="unknown">Desconocido</option>
+          </select>
+        </div>
+
+        <div class="filter-field">
+          <label for="species-filter">Especie</label>
+          <input id="species-filter" name="species" type="text" placeholder="Ej. Human" autocomplete="off">
+        </div>
+
+        <div class="filter-field">
+          <label for="gender-filter">Género</label>
+          <select id="gender-filter" name="gender">
+            <option value="">Todos</option>
+            <option value="female">Femenino</option>
+            <option value="male">Masculino</option>
+            <option value="genderless">Sin género</option>
+            <option value="unknown">Desconocido</option>
+          </select>
+        </div>
+
+        <div class="filter-actions">
+          <button class="button button-primary" type="submit">Buscar</button>
+          <button class="button button-secondary" id="clear-filters" type="button">Limpiar filtros</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="results-section" aria-labelledby="results-heading" aria-busy="false">
+      <div class="results-heading-row">
+        <h2 id="results-heading">Personajes</h2>
+        <p id="results-summary" class="results-summary"></p>
+      </div>
+
+      <div id="status-message" class="status-message" role="status" aria-live="polite" hidden></div>
+      <button id="retry-button" class="button button-secondary retry-button" type="button" hidden>Intentar de nuevo</button>
+      <div id="characters-grid" class="characters-grid"></div>
+
+      <nav id="pagination" class="pagination" aria-label="Paginación de personajes" hidden>
+        <button id="previous-page" class="button button-secondary" type="button" disabled>Anterior</button>
+        <p id="page-indicator" aria-live="polite">Página 1</p>
+        <button id="next-page" class="button button-primary" type="button" disabled>Siguiente</button>
+      </nav>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Proyecto académico · Laboratorio de Programación Web</p>
+      <p>Datos obtenidos de <a href="https://rickandmortyapi.com/" target="_blank" rel="noopener noreferrer">The Rick and Morty API</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>
